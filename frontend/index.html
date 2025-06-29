@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamPal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+   <div class="personalize-box" id="personalize-box">
+    <h2>✨ Personalize DreamPal</h2>
+    <form id="personalize-form">
+      <div>
+        <label for="past-keywords">Your Childhood (3–5 words):</label><br>
+        <input type="text" id="past-keywords" placeholder="e.g. joyful, shy, adventurous" />
+      </div>
+      <div>
+        <label for="future-keywords">Future Self Goals (3–5 words):</label><br>
+        <input type="text" id="future-keywords" placeholder="e.g. calm, successful, kind" />
+      </div>
+      <button type="submit">💾 Save</button>
+    </form>
+  </div>
+
+   <div class="chat-container" id="chat-container" style="display: none;">
+    <h1>💬 DreamPal</h1>
+    <div class="mode-toggle">
+      <label for="mode-select">🕰️ Talk to:</label>
+      <select id="mode-select">
+        <option value="younger">Younger Self</option>
+        <option value="future">Future Self</option>
+      </select>
+    </div>
+    <div id="chat-box" class="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Talk to DreamPal..." required />
+      <button type="submit">Send</button>
+      <button type="button" id="mic-btn">🎤</button>
+    </form>
+  </div>
+
+  <div id="spline-container" class="spline-bg" style="display: none;"></div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

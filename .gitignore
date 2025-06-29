@@ -1,0 +1,12 @@
+# Ignore Python environment and sensitive files
+.env
+__pycache__/
+*.pyc
+
+# Ignore frontend builds (optional)
+dist/
+node_modules/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
