@@ -35,7 +35,6 @@ def personalize():
     personality_data["future"] = data.get("futureDesc", "")
     return jsonify({"status": "success"})
 
-# 💬 Chat with AI
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
@@ -113,4 +112,4 @@ def speak():
         return jsonify({"error": "TTS failed"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
