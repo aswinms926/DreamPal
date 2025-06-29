@@ -1,3 +1,5 @@
+const BACKEND_URL = "https://dreampal-backend.onrender.com";
+
 const form = document.getElementById("chat-form");
 const input = document.getElementById("user-input");
 const chatBox = document.getElementById("chat-box");
@@ -19,8 +21,7 @@ const voiceIds = {
   future: "DMyrgzQFny3JI1Y1paM5"      
 };
 
-
- window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const splineScript = document.createElement("script");
   splineScript.type = "module";
   splineScript.src = "https://unpkg.com/@splinetool/viewer@0.9.502/build/spline-viewer.js";
@@ -32,16 +33,16 @@ const voiceIds = {
     splineViewer.className = "spline-bg";
     splineContainer.appendChild(splineViewer);
 
-     splineContainer.style.display = "block";
+    splineContainer.style.display = "block";
     personalizeBox.style.display = "block";
   };
 });
 
- modeSelect.addEventListener("change", () => {
+modeSelect.addEventListener("change", () => {
   selectedMode = modeSelect.value;
 });
 
- personalizeForm.addEventListener("submit", (e) => {
+personalizeForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const past = document.getElementById("past-keywords").value.trim();
   const future = document.getElementById("future-keywords").value.trim();
@@ -53,7 +54,7 @@ const voiceIds = {
   chatContainer.style.display = "block";
 });
 
- form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const userMessage = input.value.trim();
   if (!userMessage) return;
@@ -63,7 +64,7 @@ const voiceIds = {
   appendMessage("DreamPal is thinking... 🤔", "bot");
 
   try {
-    const res = await fetch("http://127.0.0.1:5000/chat", {
+    const res = await fetch(`${BACKEND_URL}/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -88,7 +89,7 @@ const voiceIds = {
   }
 });
 
- function appendMessage(message, sender) {
+function appendMessage(message, sender) {
   const msg = document.createElement("div");
   msg.classList.add("message", sender);
   msg.textContent = message;
@@ -103,9 +104,9 @@ function removeLastBotMessage() {
   }
 }
 
- async function speakWithVoice(text, voiceId) {
+async function speakWithVoice(text, voiceId) {
   try {
-    const res = await fetch("http://127.0.0.1:5000/speak", {
+    const res = await fetch(`${BACKEND_URL}/speak`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, voiceId })
@@ -121,7 +122,7 @@ function removeLastBotMessage() {
   }
 }
 
- const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "en-US";
 recognition.interimResults = false;
 
